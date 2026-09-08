@@ -1,0 +1,1 @@
+export const confirmEmailKey = (userId:string)=> `user:${userId}:confirmEmailotp`

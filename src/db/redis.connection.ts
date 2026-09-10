@@ -4,8 +4,8 @@ import redis from "redis"
 
 
 export const redisclient = redis.createClient({
-    url:redis://localhost:6379
-})
+    url: "redis://localhost:6379"
+});
 
 
 redisclient.on("error", (err) => {

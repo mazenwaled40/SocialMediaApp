@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
+import { userModel } from "../user/models/user.model";
 import { IUser } from "../user/types/user.types";; // استورد الـ Interface بتاع اليوزر عندك
-
 
 import jwt from "jsonwebtoken";
 
@@ -22,22 +22,22 @@ export const decodeToken = async (authorization:string) => {
   const userId = payload.id;
 
   // روح هات اليوزر ده من الداتا بيز بالـ ID بتاعه
-  const User = await user.findById(userId);
-  if (!user) {
+  const User = await userModel.findById(userId);
+  if (!User) {
     throw new Error("user not found");
   }
 
   // رجّع اليوزر النضيف اللي لقيناه
-  return { user };
+  return { User };
 };
 
 export const middleware = async (req:Request, res:Response, next:NextFunction) => {
   // لقط التوكن اللي جاي في الـ headers من بره
   const authorization = req.headers.authorization;
   // ابعته للدالة اللي فوق واستناها تفك شفرته وتجيب اليوزر
-  const { user } = await decodeToken(authorization: string);
+  const { User } = await decodeToken(authorization:string);
   // احقن اليوزر جوه الـ req عشان الكل يشوفه بعد كدا
-  req.User = user;
+  req.User = User;
   // اديله الضوء الأخضر يعدي للمرحلة اللي بعدها
   next();
 };

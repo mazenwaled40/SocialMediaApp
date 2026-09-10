@@ -12,11 +12,10 @@ app.use(express.json())
     await DBConnection()
     app.use("/auth" , router)
     app.get('/hello',(req,res) =>{
-        
+    
     })
-
+}
 
     app.listen(process.env.PORT,()=>{
         console.log(chalk.bgGreen("server running on port"))
     })
-    

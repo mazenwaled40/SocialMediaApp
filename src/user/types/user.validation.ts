@@ -31,7 +31,7 @@ export const friendRequestReplaySchema = {
     })
 };
 
-export type friendRequestRepalyData = z.infer<typeof friendRequestReplaySchema.body> &
+export type friendRequestReplayData = z.infer<typeof friendRequestReplaySchema.body> &
     z.infer<typeof friendRequestReplaySchema.params>;
 
 export const cancelFriendRequest = {

@@ -29,12 +29,17 @@ export const inizializeio = (httpserver: httpserver) => {
 
 io.on("connect",(socket:Socket) =>{
 //هحط هنا اللي المفروض يحصل اول ما حد يعمل كونكت او لوجين
+registerNewUser(socket)
 
-
-
-
+socket.on("sendMessage",(data) =>{
+  console.log({data})
+})
     socket.on("login sucssefuly",(data) =>{
 
+    })
+
+    socket.on("disconnect",()=>{
+revokeUser(socket)
     })
 })
 

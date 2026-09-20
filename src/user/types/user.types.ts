@@ -32,4 +32,4 @@ export interface IUser{
 
 }
 
-export type Huser = HydratedDocument<IUser>
+export type HUser = HydratedDocument<IUser>
